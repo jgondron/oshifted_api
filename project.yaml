@@ -7,8 +7,8 @@ items:
       openshift.io/generated-by: OpenShiftNewApp
     creationTimestamp: null
     labels:
-      app: railstest
-    name: railstest
+      app: railsapi
+    name: railsapi
   spec:
     ports:
     - name: 8080-tcp
@@ -20,8 +20,8 @@ items:
       protocol: TCP
       targetPort: 9876
     selector:
-      app: railstest
-      deploymentconfig: railstest
+      app: railsapi
+      deploymentconfig: railsapi
     sessionAffinity: None
     type: ClusterIP
   status:
@@ -34,15 +34,15 @@ items:
       openshift.io/host.generated: "true"
     creationTimestamp: null
     labels:
-      app: railstest
-    name: railstest
+      app: railsapi
+    name: railsapi
   spec:
-    host: railstest-dltp-1066-container-spike.192.168.99.100.nip.io
+    host: railsapi-oshifted-api.192.168.99.100.nip.io
     port:
       targetPort: 8080-tcp
     to:
       kind: Service
-      name: railstest
+      name: railsapi
       weight: 100
     wildcardPolicy: None
   status:
@@ -51,7 +51,7 @@ items:
       - lastTransitionTime: 2017-10-12T15:55:45Z
         status: "True"
         type: Admitted
-      host: railstest-dltp-1066-container-spike.192.168.99.100.nip.io
+      host: railsapi-oshifted-api.192.168.99.100.nip.io
       routerName: router
       wildcardPolicy: None
 - apiVersion: v1
@@ -62,8 +62,8 @@ items:
     creationTimestamp: null
     generation: 1
     labels:
-      app: railstest
-    name: railstest
+      app: railsapi
+    name: railsapi
   spec:
     lookupPolicy:
       local: false
@@ -71,7 +71,7 @@ items:
     - annotations: null
       from:
         kind: DockerImage
-        name: 172.30.1.1:5000/dltp-1066-container-spike/railstest:latest
+        name: 172.30.1.1:5000/oshifted-api/railsapi:latest
       generation: null
       importPolicy: {}
       name: latest
@@ -86,15 +86,15 @@ items:
       openshift.io/generated-by: OpenShiftNewApp
     creationTimestamp: null
     labels:
-      app: railstest
-    name: railstest
+      app: railsapi
+    name: railsapi
   spec:
     failedBuildsHistoryLimit: 5
     nodeSelector: null
     output:
       to:
         kind: ImageStreamTag
-        name: railstest:latest
+        name: railsapi:latest
     postCommit: {}
     resources: {}
     runPolicy: Serial
@@ -134,13 +134,13 @@ items:
     creationTimestamp: null
     generation: 1
     labels:
-      app: railstest
-    name: railstest
+      app: railsapi
+    name: railsapi
   spec:
     replicas: 1
     selector:
-      app: railstest
-      deploymentconfig: railstest
+      app: railsapi
+      deploymentconfig: railsapi
     strategy:
       activeDeadlineSeconds: 21600
       recreateParams:
@@ -153,8 +153,8 @@ items:
           openshift.io/generated-by: OpenShiftNewApp
         creationTimestamp: null
         labels:
-          app: railstest
-          deploymentconfig: railstest
+          app: railsapi
+          deploymentconfig: railsapi
       spec:
         containers:
         - args:
@@ -169,9 +169,9 @@ items:
             value: 39442fb448c0059e9a7ef1bc39c8b9b8411cac2cb2a5a28ec6cfd071508335ee1dd88520b323ee06fa19c07c23510503ea203bfe8ce165200e7f72030bad8c6d
           - name: WEB_CONCURRENCY
             value: "0"
-          image: 172.30.1.1:5000/dltp-1066-container-spike/railstest@sha256:1d5ca5e3e175d1c2af0447925cf1afc3e9a2084638bf6025c5acaa80102ee7b8
+          image: 172.30.1.1:5000/oshifted-api/railsapi@sha256:1d5ca5e3e175d1c2af0447925cf1afc3e9a2084638bf6025c5acaa80102ee7b8
           imagePullPolicy: Always
-          name: railstest
+          name: railsapi
           ports:
           - containerPort: 8080
             protocol: TCP
@@ -188,11 +188,11 @@ items:
     - imageChangeParams:
         automatic: true
         containerNames:
-        - railstest
+        - railsapi
         from:
           kind: ImageStreamTag
-          name: railstest:latest
-          namespace: dltp-1066-container-spike
+          name: railsapi:latest
+          namespace: oshifted-api
       type: ImageChange
     - type: ConfigChange
   status:
