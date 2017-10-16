@@ -6,4 +6,9 @@ class EchoController < ApplicationController
       database: Rails.application.config.database_configuration['development']['some_other_config']
     }
   end
+
+  def debug
+    byebug
+    render json: {}
+  end
 end
