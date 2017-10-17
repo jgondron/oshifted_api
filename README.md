@@ -21,3 +21,7 @@ Create the project:
 railsapi-1   Source    Git@76b3d46   Complete   3 minutes ago   3m5s
 ```
 1. Test with http://railsapi-oshifted-api.192.168.99.100.nip.io/echo?message=Hello!
+
+
+Open questions:
+1. Under which user account does this setup create a POD?
