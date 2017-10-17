@@ -1,8 +1,8 @@
 # oshifted_api
 Basic rails app to play with iterating within an open shift ecosystem
 
-# Development Setup using Open Shift
-
+# Development using Open Shift
+## Setup
 Install Open Shift/Minishift (Reference: https://gist.github.com/h-parekh/bff04b97bdd8d2428771f9238d7a1e46):
 1. `brew cask install minishift`
 1. `brew cask install virtualbox`
@@ -16,3 +16,6 @@ Create the project:
 1. `oc create -f project.yaml`
 1. Wait for build/deploy to finish: `oc get builds --watch`
 1. Test with http://railsapi-oshifted-api.192.168.99.100.nip.io/echo?message=Hello!
+
+## Iterating
+Fill this in
