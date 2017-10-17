@@ -13,6 +13,7 @@ Install Open Shift/Minishift (Reference: https://gist.github.com/h-parekh/bff04b
 
 Create the project:
 1. Clone this repository `git clone https://github.com/jgondron/oshifted_api.git`
+1. Login as admin user `oc login`
 1. `oc new-project oshifted-api`
 1. `oc create -f /<path_to_repo>/project.yaml`
 1. Watch the build/deploy progress: `oc get builds --watch`
