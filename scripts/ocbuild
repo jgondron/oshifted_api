@@ -1,0 +1,10 @@
+# Runs a byebug client to remotely debug the specified application in your
+# current open shift project.
+# Usage:
+#   ocbuild <application name> <targetdir>
+# Example:
+#   ocbuild railsapi ..
+appname=$1
+targetdir=$2
+oc start-build $appname --from-dir=$targetdir
+oc get builds --watch
