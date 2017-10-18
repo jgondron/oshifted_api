@@ -5,7 +5,7 @@ Basic rails app to play with iterating within an open shift ecosystem
 ## Setup
 Install Open Shift/Minishift (Reference: https://gist.github.com/h-parekh/bff04b97bdd8d2428771f9238d7a1e46):
 1. `brew cask install minishift`
-1. `brew cask install virtualbox`
+1. `brew cask install virtualbox` Note: May prompt for a password. Enter your normal login password.
 1. Start open shift: `minishift start --vm-driver virtualbox`
 1. Wait for a message like: `The server is accessible via web console at: https://x.x.x.x:8443`
 1. Add the cli to your path: `eval $(minishift oc-env)`
