@@ -8,7 +8,7 @@ Install Open Shift/Minishift (Reference: https://gist.github.com/h-parekh/bff04b
 1. `brew cask install virtualbox` Note: May prompt for a password. Enter your normal login password.
 1. Start open shift: `minishift start --vm-driver virtualbox`
 1. Wait for a message like: `The server is accessible via web console at: https://x.x.x.x:8443`
-1. Add the cli to your path: `eval $(minishift oc-env)`
+1. Add the cli to your path: `eval $(minishift oc-env)` Note: Either add this to your shell profile, or make sure you run every time you open a new shell.
 1. Test the cli: `oc version`
 
 Create the project:
@@ -21,14 +21,32 @@ Create the project:
     Login successful.
     ```
     Note: You don't need to remember the password. You can always login as the admin user with any password. Just make sure to always       use the same username
-1. `oc new-project oshifted-api`
-1. `oc create -f /<path_to_repo>/project.yaml`
-1. Watch the build/deploy progress: `oc get builds --watch`
-1. Wait for a message like:
-```console
-railsapi-1   Source    Git@76b3d46   Complete   3 minutes ago   3m5s
-```
-1. Test with http://railsapi-oshifted-api.192.168.99.100.nip.io/echo?message=Hello!
+1. Create the project: `oc new-project oshifted-api`
+1. Load the project configs: `oc create -f /<path_to_repo>/project.yaml`
+1. Watch the build/deploy progress: `oc get builds --watch` and wait for a message like:
+    ```console
+    railsapi-1   Source    Git@76b3d46   Complete   3 minutes ago   3m5s
+    ```
+1. Alternatively, if you prefer more feedback, you can watch the logs for the running build: 
+    ```
+    oc get builds --selector=app=railsapi | tail -n1 | awk '{ print $1 }' | xargs -I {} oc logs build/{} -f
+    ```
+    and wait for this:
+    ```console
+    ...
+    Bundle complete! 8 Gemfile dependencies, 49 gems now installed.
+    Gems in the group test were not installed.
+    Bundled gems are installed into ./bundle.
+    ---> Cleaning up unused ruby gems ...
+
+    Pushing image 172.30.1.1:5000/oshifted-api/railsapi:latest ...
+    Pushed 6/9 layers, 67% complete
+    Pushed 7/9 layers, 78% complete
+    Pushed 8/9 layers, 89% complete
+    Pushed 9/9 layers, 100% complete
+    Push successful
+    ```
+1. Test with a browser at: http://railsapi-oshifted-api.192.168.99.100.nip.io/echo?message=Hello!
 
 ## Iterating
 
