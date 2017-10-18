@@ -13,7 +13,14 @@ Install Open Shift/Minishift (Reference: https://gist.github.com/h-parekh/bff04b
 
 Create the project:
 1. Clone this repository `git clone https://github.com/jgondron/oshifted_api.git`
-1. Login as admin user `oc login`
+1. Login to open shift: `oc login`. Enter 'admin' for the username, and enter any password you like:
+    ```
+    Authentication required for https://192.168.99.100:8443 (openshift)
+    Username: admin
+    Password:
+    Login successful.
+    ```
+    Note: You don't need to remember the password. You can always login as the admin user with any password. Just make sure to always       use the same username
 1. `oc new-project oshifted-api`
 1. `oc create -f /<path_to_repo>/project.yaml`
 1. Watch the build/deploy progress: `oc get builds --watch`
