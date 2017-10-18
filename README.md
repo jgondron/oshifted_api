@@ -120,4 +120,21 @@ Once this is connected, you should be able to set a breakpoint with byebug and i
 (byebug)
 ```
 
-## TODO: Iterating on the Open Shift configuration
+## Iterating on the Open Shift configuration
+Edit the running configuration until happy, then it can be dumped via:
+```
+oc export service,route,imagestream,buildconfig,deploymentconfig -o yaml > project.yaml
+```
+Commit the changes to this file to the repo. To apply those changes on other developer machines, use `oc apply`. 
+
+If something has changed, ie not been removed, just an apply with an overwrite seems to work:
+```
+oc apply --overwrite=true -f project.yaml
+```
+
+If something has been removed, you have to also force a prune:
+```
+oc apply --all --overwrite=true --prune=true -f project.yaml
+```
+
+Note: These are very broad strokes. Not sure if it’s safe to always use prune for what we are doing.
