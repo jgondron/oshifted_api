@@ -48,9 +48,10 @@ Create the project:
     ```
 1. Test with a browser at: http://railsapi-oshifted-api.192.168.99.100.nip.io/echo?message=Hello!
 
-## Iterating
+## Iterating on the Application Code
+Since the containers are not reading the files on your host OS, there are two things that need to be done before the running instance will reflect changes you make to the application code.
 
-### Run a sync
+### 1. Sync the files to the container
 For dynamically reloaded files, such as controllers, views, models, etc., running a constant rsync that will copy files from your host os to the container should be sufficient.
 
 From the root of the project directory:
@@ -65,7 +66,7 @@ building file list ... done
 
 Changing a file should trigger the rsync (within a few seconds) and you should be able to refresh the page to see the change.
 
-### Rebuild from local
+### 2. Rebuild the image from your local files
 For files that require a rebuild or a restart of rails, such as secrets, Gemfile, etc., you will need to rebuild the image. You can do this without having to push to the repo by running a build using the local directory.
 
 From the root of the project directory:
@@ -119,4 +120,4 @@ Once this is connected, you should be able to set a breakpoint with byebug and i
 (byebug)
 ```
 
-
+## TODO: Iterating on the Open Shift configuration
