@@ -15,6 +15,8 @@ docker run -d \
   oshifted_api
 ```
 
+# Stop
+docker stop oshifted_api
 
 # Test
 
