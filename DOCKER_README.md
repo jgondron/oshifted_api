@@ -21,6 +21,6 @@ docker run -d \
 http://localhost:8080/echo?message=Hello!
 
 # Debug
-```docker exec -it oshifted_api bash -c "bundle exec byebug --remote localhost:9876```
+```docker exec -it oshifted_api bash -c "bundle exec byebug --remote localhost:9876"```
 
 http://localhost:8080/debug
